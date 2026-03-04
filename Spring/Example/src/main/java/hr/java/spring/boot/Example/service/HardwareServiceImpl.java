@@ -33,8 +33,8 @@ public class HardwareServiceImpl implements HardwareService {
     }
 
     @Override
-    public Hardware saveNewHardware(HardwareDTO hardware) {
-        return hardwareRepository.saveNewHardware(convertHardwareDtoToHardware(hardware));
+    public Hardware saveNewHardware(HardwareDTO hardwareDTO) {
+        return hardwareRepository.saveNewHardware(convertHardwareDtoToHardware(hardwareDTO));
     }
 
     @Override
@@ -74,14 +74,13 @@ public class HardwareServiceImpl implements HardwareService {
     }
 
     private Hardware convertHardwareDtoToHardware(HardwareDTO hardwareDTO) {
-        Long latestId =
-                hardwareRepository.getAllHardware().stream()
-                        .max((a1, a2) -> a1.getId().compareTo(a2.getId()))
-                        .get().getId();
 
-        return new Hardware(latestId + 1, hardwareDTO.getHardwareName(),
-                hardwareDTO.getHardwareDescription(), hardwareDTO.getHardwarePrice(),
-                Category.valueOf(hardwareDTO.getCategoryName()));
+        return new Hardware(
+                null,
+                hardwareDTO.getHardwareName(),
+                hardwareDTO.getHardwareDescription(),
+                hardwareDTO.getHardwarePrice(),
+                Category.valueOf(hardwareDTO.getCategoryName().toUpperCase()));
     }
 
     private SearchHardware convertSearchHardwareDtoToSearchHardware(SearchHardwareDTO searchHardwareDTO) {

@@ -66,7 +66,7 @@ public class MockHardwareRepository implements HardwareRepository {
                     .collect(Collectors.toList());
         }
 
-        if(!Optional.of(searchHardware.getName()).isEmpty()) {
+        if(!Optional.ofNullable( searchHardware.getName()).isEmpty()) {
             hardware = hardware.stream()
                     .filter(a -> a.getName().contains(searchHardware.getName()))
                     .collect(Collectors.toList());

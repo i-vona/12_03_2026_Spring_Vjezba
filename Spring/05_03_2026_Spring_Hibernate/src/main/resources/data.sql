@@ -27,3 +27,13 @@ VALUES('NVIDIA GeForce RTX 4080', 'High-end gaming GPU', 80000, 2);
 
 INSERT INTO Hardware(name, description, price, category_id)
 VALUES('AMD Radeon RX 7900 XTX', 'High-end gaming GPU', 70000, 2);
+
+
+INSERT INTO authority(authority_name) VALUES('ROLE_ADMIN');
+INSERT INTO authority(authority_name) VALUES('ROLE_USER');
+
+INSERT INTO users(username, password) VALUES('admin', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG');
+INSERT INTO users(username, password) VALUES('user', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG');
+
+INSERT INTO users_authority(user_id, authority_id) VALUES(1, 1);
+INSERT INTO users_authority(user_id, authority_id) VALUES(2, 2);
